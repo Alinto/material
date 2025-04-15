@@ -9,7 +9,7 @@ var nextUniqueId = 0, isIos, isAndroid, isFirefox;
 // Support material-tools builds.
 if (window.navigator) {
   var userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
-  isIos = userAgent.match(/ipad|iphone|ipod/i);
+  isIos = /ipad|iphone|ipod/i.test(navigator.userAgent) && (!/os (\d+)_/i.test(navigator.userAgent) || parseInt(navigator.userAgent.match(/os (\d+)_/i)[1], 10) < 18); // disable for iOS 18 and upper
   isAndroid = userAgent.match(/android/i);
   isFirefox = userAgent.match(/(firefox|minefield)/i);
 }
